@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/resources/css/bron.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    <title>Tables</title>
+</head>
+<body>
+<header class="he">
+    <div class="container">
+        <div class="hei">
+            <div class="hel">Пельменная</div>
+
+            <nav class="nav">
+                <a class="navl" href="/">Main</a>
+                <a class="navl" href="/about">About</a>
+                <a class="navl" href="/tables">Tables</a>
+                <a class="navl" href="/menu">Menu</a>
+                <a class="navl" href="/anotations">Anotations</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="intro3">
+    <div class="menu">
+<form action="#" th:action="@{/tables}" th:object="${bron}" method="post">
+    <p>Table: <input type="text" th:field="*{table}" autofocus required/></p>
+    <div style="color:#ff0000" th:if="${bron.error}">Table Error</div>
+    <p>Email: <input type="text" th:field="*{email}" required pattern="\S+@[a-z]+.[a-z]+"/></p>
+    <p>Time: <input type="text" th:field="*{time_begin}" autofocus required pattern="[0-9][0-9]:[0-9][0-9]+"/></p>
+    <p><input type="submit" value="Get bron" />
+</form>
+        <p style="margin: auto">Уже занятые:</p>
+<table class="table table-striped" style="margin: auto">
+    <thead>
+    <tr>
+        <th style="width: 200px;text-align: center">Table   </th>
+        <th style="width: 200px;text-align: center">Time</th>
+        <th style="width: 200px;text-align: center">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:if="${tables.length == 0}">
+    <tr >
+            <td  colspan="8">No Table to Display</td>
+    </tr></div>
+        <div th:each = "table : ${tables}">
+            <tr>
+                <td style="text-align: center" th:text="${table.table_num}">aaa</td>
+                <td style="text-align: center" th:text="${table.time_begin}">bbb</td>
+                <td style="text-align: center" th:text="${table.stat}">bbb</td>
+            </tr>
+        </div>
+    </tbody>
+</table>
+    </div></div>
+</body>
+</html>

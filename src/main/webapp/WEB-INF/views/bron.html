@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/resources/css/bron.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    <title>Bron</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">MoGo</div>
+
+            <nav class="nav">
+                <a class="nav__link" href="/">Main</a>
+                <a class="nav__link" href="/about">About</a>
+                <a class="nav__link" href="/tables">Tables</a>
+                <a class="nav__link" href="/menu">Menu</a>
+                <a class="nav__link" href="bron">Bron</a>
+                <a class="nav__link" href="/anotations">Anotations</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class = intro>
+    <div class = form-wrap>
+<form action="#" th:action="@{/bron}" th:object="${bron}" method="post">
+    <p>Table: <input type="text" th:field="*{table}" /></p>
+    <p>Email: <input type="text" th:field="*{email}" /></p>
+    <p><input type="submit" value="Get bron" />
+</form>
+    </div>
+
+</div>
+</body>
+</html>
